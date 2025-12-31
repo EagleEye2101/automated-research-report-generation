@@ -5,7 +5,7 @@ uvicorn research_and_analyst.api.main:app --reload
 
 # --- Tech stack 
 langgraph , node , edges, dynamic prompt instructions , human in loop feedback , graph display 
-
+test.ipynb on langgraph 
 Project Github: https://github.com/sunnysavita10/automated-research-report-generation
 
 Command for UV:
