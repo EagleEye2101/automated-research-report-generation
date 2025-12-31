@@ -23,12 +23,8 @@ dependencies = [
 
 # Optional: authors, license
 authors = [{ name = "Kiran Raka" }]
-#license = { text = "Proprietary" }
-
-# Optional: CLI command (python -m pip install -e . ke baad yeh create hoga)
-[project.scripts]
-ecomm-assistant = "automated-research-report-generation.cli:main"
+license = { text = "Proprietary" }
 
 [tool.setuptools.packages.find]
-where = ["auto-research-report-gen"]
-include = ["automated-research-report-generation*"]
+where = ["research_and_analyst"]
+
