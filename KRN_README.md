@@ -2,6 +2,7 @@
 **Project Document Link:** https://docs.google.com/document/d/1VlHirN62sWE1CwXr4v2YM40sg8luskD6VY4A2gKOHK4/edit?usp=sharing
 uvicorn research_and_analyst.api.main:app --reload
 ```
+Tip : to kill any open server ports : # force kill one liner : lsof -ti tcp:8000 | xargs -r kill -9
 
 # --- Tech stack 
 langgraph , node , edges, dynamic prompt instructions , human in loop feedback , graph display 
@@ -257,4 +258,13 @@ Now follow the video for further configuration
 
 Then add the
 Add the webhook in the github:
+
+# ----- Test modular code ---------
+python research_and_analyst/workflows/report_generator_workflow.py
+
+# --- Run fast api ----
+# --- command/steps for running application ---- 
+uvicorn research_and_analyst.api.main:app --reload
+# signup and create usernam and password which will be saved in db 
+e.g. liveclassdemo/liveclass123
 
