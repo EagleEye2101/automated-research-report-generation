@@ -4,12 +4,23 @@ uvicorn research_and_analyst.api.main:app --reload
 ```
 Tip : to kill any open server ports : # force kill one liner : lsof -ti tcp:8000 | xargs -r kill -9
 
-# --- Tech stack 
+# --- Tech stack -----------------------------------------
 langgraph , node , edges, dynamic prompt instructions , human in loop feedback , graph display 
-test.ipynb on langgraph 
-Project Github: https://github.com/sunnysavita10/automated-research-report-generation
+test.ipynb on langgraph , Jinja prompt -advance prompt with conditional statements. 
+sql alkini for - pythonic libeary to interact with db  
 
-Command for UV:
+# ----- Enhancement to be implemented -------
+1. quaity of generation via SME validation 
+2. Add evaluation techniques to check quality of output , e,g, Ragas metrics , for quality of generation 
+3. Add guardrails whereever applicable 
+4. Enterprise specific knowledgebase using retrival pipeline , e,g, like wikipedia add another node - search retriever - connect to vector db > agentic RAG based system for company knowledgebase  
+5. Add the langsmith dashboard to track entire LLM application. 
+6. UI enhancement - give option to user to pass max analyst numbers
+7. After creating analyst , showcase the information over UI to verify and reconfirm to rewise the human feeddback 
+
+
+Get started Command for UV:
+test.ipynb 
 
 uv –version
 If uv is not there then install the uv
@@ -268,3 +279,4 @@ uvicorn research_and_analyst.api.main:app --reload
 # signup and create usernam and password which will be saved in db 
 e.g. liveclassdemo/liveclass123
 
+# install SQLite viewer extention to see db 
