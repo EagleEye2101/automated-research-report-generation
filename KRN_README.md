@@ -35,6 +35,10 @@ Open it inside VS Code
 Over the VS Code terminal, write this command:  uv init
 
 To create a virtual environment, follow the command below
+uv venv env --python cpython-3.11.13-macos-aarch64-none  
+source env/bin/activate
+uv pip install -r ./requirements.txt
+
 You can simply write-> uv venv for creating a virtual environment
 
 It will create a virtual env with the default name .venv (this will be the name of the env)
@@ -276,6 +280,11 @@ python research_and_analyst/workflows/report_generator_workflow.py
 # --- Run fast api ----
 # --- command/steps for running application ---- 
 uvicorn research_and_analyst.api.main:app --reload
+or run 
+uvicorn research_and_analyst.api.main:app --host 0.0.0.0 --port 8000 
+or 
+uvicorn research_and_analyst.api.main:app --host 0.0.0.0 --port 8000 --reload
+
 # signup and create usernam and password which will be saved in db 
 e.g. liveclassdemo/liveclass123
 
