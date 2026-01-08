@@ -307,3 +307,54 @@ az login
 bash ./azure-deploy-jenkins.sh
 bash ./build-and-push-docker-image.sh
 
+# to run jenkin container over azure , .sh is shell command used to run over terminal  
+# ensure docker engine up and running 
+run : bash ./azure-deploy-jenkins.sh
+run : bash ./Dockerfile.jenkins
+# from azure you will get image from this location 
+Hiome<resources group > research-report-jenkins-rg>reportjenkinsacr
+
+open jenkins url >login > manage jenkins>security > enable proxy compatibility > select check box 
+from IDE run below command 
+# setup the infra over azue 
+bash setup-app-infrastructure.sh
+# after infra setup script run , console will show credential to make connection to azure 
+add these credential on Jenkins > manage secrets > systen>New creds >select secret text from dropdown > global credentials 
+add all creds under secret text 
+add all credentials from console 
+# To create service primcipal in azure with role based access run below command in IDE , you will get credentials add these creds in jenkins credential as well 
+az ad sp create-for-rbac --name "jenkins-research-report-sp --role Contributor --scopes /subscriptions/$(az account show --query id -o tsv)
+
+
+you will get below IDs, add these to jenkins credential manager 
+azure -client-id:appid 
+azure-tanent-id:tanent
+azure-client-secret:password
+azure-subscription-id by running cmd az account show --query id -o tsv
+
+Openai-api-key
+Google-api-key
+Groq-api-key
+Tavily-api-key
+llm-provider
+# run appliation docker file to create image of application 
+bash build-and-push-docker-image.sh
+
+
+
+# create jenkin job 
+New item > name as "Research-Report-Pipeline" > Select pipeline > ok 
+Select Github roject checkbox > github repo url > Trigger > select Github hook trigger for gitscm polling >
+Definition >select pipeline script from scm >git > provide repository url as got repo url 
+select branch */main > script path textbox > "jenkinsfile"> apply 
+
+# add webhook in the github 
+Github repo > settings>webhook > add webhook > payloadURL >"your jenkin url " "http://jenkins-research-72338.eastus.azurecontainer.io:8080/github-webhook/
+content type text box > "application/json" > which event would you like to trigger this webhook > select "just the push event " > select add webhook 
+
+oh github push any changes and it will trigger the pipeline 
+once job finished , console will show application url 
+
+
+
+
