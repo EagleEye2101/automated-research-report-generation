@@ -3,6 +3,8 @@
 uvicorn research_and_analyst.api.main:app --reload
 ```
 Tip : to kill any open server ports : # force kill one liner : lsof -ti tcp:8000 | xargs -r kill -9
+refer to the file /automated-research-report-generation/archive/Writeup_whiteboard/llmops-project-03.pdf
+
 
 # --- Tech stack -----------------------------------------
 langgraph , node , edges, dynamic prompt instructions , human in loop feedback , graph display 
@@ -289,3 +291,19 @@ uvicorn research_and_analyst.api.main:app --host 0.0.0.0 --port 8000 --reload
 e.g. liveclassdemo/liveclass123
 
 # install SQLite viewer extention to see db 
+# install azure cli on your machine 
+az --version
+az login # if subscription not available please login and select subscription by adding card details. 
+az account list --output table # then copy tanentID from the output 
+az login --tenant <Tenant_ID> --use-device-code # e.g tenant id = 9a1f3864-3635-4bf1-be55-e1864aa7a49c
+# or login to azure portal and go to subscription and look for parent management group ID 
+az account list --output table 
+az account set --subscription <SubscriptionID>
+az account list --output table
+az account show 
+az group list 
+az login
+
+bash ./azure-deploy-jenkins.sh
+bash ./build-and-push-docker-image.sh
+
